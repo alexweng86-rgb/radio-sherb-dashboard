@@ -127,6 +127,29 @@
   .g-rck  { background: linear-gradient(120deg, #2b0a0a, #331500); }
   .g-chl  { background: linear-gradient(120deg, #0a2e29, #08332a); }
 
+  /* ── FREE / PRO TIERS ───────────────── */
+  .tiers { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 700px) { .tiers { grid-template-columns: 1fr; } }
+  .tier {
+    border-radius: 18px; padding: 24px; position: relative;
+    border: 1px solid rgba(255,255,255,.08);
+    background: linear-gradient(160deg, var(--card), var(--bg2));
+  }
+  .tier.pro { border-color: var(--border); box-shadow: 0 0 30px rgba(57,255,20,.07); }
+  .tier .tname { font-size: 22px; font-weight: 900; margin-bottom: 14px; }
+  .tier.free .tname { color: var(--muted); }
+  .tier.pro .tname { color: var(--accent); text-shadow: 0 0 18px rgba(57,255,20,.35); }
+  .tier ul { list-style: none; }
+  .tier li {
+    font-size: 14.5px; color: var(--muted); padding: 5px 0 5px 20px; position: relative;
+  }
+  .tier li::before { content: '•'; position: absolute; left: 4px; color: var(--accent); }
+  .tier .tprice {
+    margin-top: 16px; display: inline-block; padding: 7px 16px; border-radius: 999px;
+    font-size: 13.5px; font-weight: 800;
+    background: var(--accent-dim); border: 1px solid var(--border); color: var(--accent);
+  }
+
   /* ── RECORDING FLOW ─────────────────── */
   .flow { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; counter-reset: step; }
   .step {
@@ -353,7 +376,67 @@
 
 <section>
   <div class="wrap">
-    <h2><span class="num">04</span> Как работает запись эфира</h2>
+    <h2><span class="num">04</span> Монетизация: Free и Pro</h2>
+    <p class="sub">Одно приложение — два уровня. Полная версия открывается кодом активации (офлайн-проверка, сервер не нужен).</p>
+    <div class="tiers">
+      <div class="tier free">
+        <div class="tname">Free</div>
+        <ul>
+          <li>Первая станция каждого жанра</li>
+          <li>Запись эфира 1 раз в день</li>
+          <li>Длительность записи — до 30 секунд</li>
+          <li>Избранное — полностью</li>
+          <li>Проигрывание своих записей</li>
+        </ul>
+        <div class="tprice">0 ₽</div>
+      </div>
+      <div class="tier pro">
+        <div class="tname">Pro</div>
+        <ul>
+          <li>Все 34 станции всех жанров</li>
+          <li>Запись без ограничения длительности</li>
+          <li>Неограниченное число записей</li>
+          <li>Бейдж PRO на главном экране</li>
+          <li>Все будущие фичи — без доплат</li>
+        </ul>
+        <div class="tprice">код активации</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2><span class="num">05</span> Как работает замок и активация</h2>
+    <p class="sub">Сценарий покупки: пользователь видит замки → пейвол → вводит полученный код → Pro включается мгновенно.</p>
+    <div class="flow">
+      <div class="step">
+        <div class="si">🔒</div>
+        <h4>Видит замки</h4>
+        <p>Во Free-версии закрытые станции показаны с замком и затемнением.</p>
+      </div>
+      <div class="step">
+        <div class="si">⭐</div>
+        <h4>Тап → пейвол</h4>
+        <p>Список того, что откроет Pro + кнопка «Введите код активации».</p>
+      </div>
+      <div class="step">
+        <div class="si">🔑</div>
+        <h4>Вводит код</h4>
+        <p>Код вида SHERB-XXXX-XXXX-XXXX проверяется прямо в приложении — офлайн.</p>
+      </div>
+      <div class="step">
+        <div class="si">✅</div>
+        <h4>Pro активирован</h4>
+        <p>Все замки сняты, появляется бейдж PRO рядом с названием.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2><span class="num">06</span> Как работает запись эфира</h2>
     <p class="sub">Сценарий «услышал трек — сохранил» — от старта записи до прослушивания.</p>
     <div class="flow">
       <div class="step">
@@ -382,7 +465,7 @@
 
 <section>
   <div class="wrap">
-    <h2><span class="num">05</span> Скриншоты из симулятора</h2>
+    <h2><span class="num">07</span> Скриншоты из симулятора</h2>
     <p class="sub">Реальные экраны приложения (iPhone 17 Pro, iOS 26.5).</p>
     <div class="shots">
       <div class="shot">
@@ -396,6 +479,16 @@
         <div class="capd">Жанр Drum &amp; Bass — 7 станций, битрейты, кнопка play</div>
       </div>
       <div class="shot">
+        <div class="frame"><img src="screenshots/06_locks.jpg" alt="Замки во Free-версии"></div>
+        <div class="cap">Free: замки</div>
+        <div class="capd">Открыта только первая станция жанра — остальные под замком</div>
+      </div>
+      <div class="shot">
+        <div class="frame"><img src="screenshots/07_paywall.jpg" alt="Пейвол Radio Sherb Pro"></div>
+        <div class="cap">Пейвол Pro</div>
+        <div class="capd">Что откроет Pro + вход в активацию кодом</div>
+      </div>
+      <div class="shot">
         <div class="frame"><img src="screenshots/02_playing.jpg" alt="Играющая станция"></div>
         <div class="cap">Эфир играет</div>
         <div class="capd">Pirate Station: подсветка, винил-индикатор, плеер-бар</div>
@@ -404,6 +497,11 @@
         <div class="frame"><img src="screenshots/03_recording.jpg" alt="Идёт запись эфира"></div>
         <div class="cap">Запись эфира</div>
         <div class="capd">Таймер REC 00:18 — эфир пишется в файл</div>
+      </div>
+      <div class="shot">
+        <div class="frame"><img src="screenshots/08_pro.jpg" alt="Pro-версия с бейджем"></div>
+        <div class="cap">Pro-версия</div>
+        <div class="capd">Бейдж PRO у названия, все станции открыты</div>
       </div>
       <div class="shot">
         <div class="frame"><img src="screenshots/04_favorites.jpg" alt="Избранные станции"></div>
@@ -421,7 +519,7 @@
 
 <section>
   <div class="wrap">
-    <h2><span class="num">06</span> Технологии и архитектура</h2>
+    <h2><span class="num">08</span> Технологии и архитектура</h2>
     <p class="sub">С чем собрано приложение и как устроен код.</p>
     <div class="cols">
       <div class="panel">
